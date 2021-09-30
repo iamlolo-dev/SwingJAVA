@@ -15,6 +15,8 @@ public class MainAPP {
     private JButton startButton;
     private JPanel Ventana;
     private JTextField textField1;
+    protected JLabel load;
+
 
     public static final String SONG = "C:\\Users\\WiZo\\IdeaProjects\\APP\\src\\Startcoffe.wav";
 
@@ -35,10 +37,12 @@ public class MainAPP {
                 if (teVerdeRadioButton.isSelected()) {
                     textField1.setText("00:01:50");
                     startTimer();
+
                 }
                 if (teBlancoRadioButton.isSelected()) {
                     textField1.setText("00:00:30");
                     startTimer();
+
                 }
             }
         });
@@ -53,6 +57,7 @@ public class MainAPP {
             Clip clip = AudioSystem.getClip();
             clip.open(au);
             clip.start();
+            load.setVisible(true);
 
             ActionListener action = new ActionListener(){
                 public void actionPerformed(ActionEvent e) {
@@ -65,6 +70,7 @@ public class MainAPP {
                     if (horas == 0 && minutos == 0 && segundos == 0) {
                         stopwatch.stop();
                         clip.stop();
+                        load.setVisible(false);
                         textField1.setText("00:00:00");
                         JOptionPane.showMessageDialog(Ventana,"El tiempo de espera a finalizado. Puede recoger el Té selecionado");
                     } else {
